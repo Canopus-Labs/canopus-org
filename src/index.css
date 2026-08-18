@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: linear-gradient(
+      160deg,
+      #B8CEDA 0%,
+      #C8D9E5 20%,
+      #D4E3ED 40%,
+      #DDE8EF 58%,
+      #E4E8EE 72%,
+      #E8E2DC 86%,
+      #EDE0D5 100%
+    );
+    min-height: 100vh;
+    color: #0F0F0F;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Typography scale */
+  h1 { font-size: 72px; line-height: 1.05; font-weight: 600; letter-spacing: -0.025em; }
+  h2 { font-size: 52px; line-height: 1.1;  font-weight: 600; letter-spacing: -0.02em; }
+  h3 { font-size: 18px; line-height: 1.5;  font-weight: 600; }
+  h4 { font-size: 16px; line-height: 1.6;  font-weight: 600; }
+  p  { font-size: 16px; line-height: 1.6;  font-weight: 400; }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 44px; }
+    h2 { font-size: 34px; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+  }
+
+  * { box-sizing: border-box; }
+
+  ::selection { background: rgba(15,15,15,0.12); color: #0F0F0F; }
+
+  :focus-visible {
+    outline: 2px solid #0F0F0F;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 100px; }
+  ::-webkit-scrollbar-thumb:hover { background: #aaa; }
+}
+
+@layer components {
+
+  /* ── Hero background — sky gradient matching Obliqq ── */
+  .hero-bg {
+    background: linear-gradient(
+      180deg,
+      #B8CEDA 0%,
+      #C8D9E5 15%,
+      #D4E3ED 30%,
+      #DDE8EF 50%,
+      #E4E8EE 65%,
+      #E8E2DC 80%,
+      #EDE0D5 100%
+    );
+  }
+
+  /* ── Navbar ── */
+  .nav-pill {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+
+  /* ── Buttons ── */
+  .btn-dark {
+    @apply inline-flex items-center gap-2 rounded-full
+           bg-[#0F0F0F] text-white font-medium
+           transition-all duration-200 hover:bg-[#2A2A2A] hover:shadow-lg
+           active:scale-95 whitespace-nowrap;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 22px;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 rounded-full
+           text-[#0F0F0F] font-medium
+           transition-all duration-200 hover:shadow-card
+           active:scale-95 whitespace-nowrap;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 22px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(0,0,0,0.10);
+    backdrop-filter: blur(8px);
+  }
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.9);
+    border-color: rgba(0,0,0,0.20);
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center gap-2 rounded-full
+           font-medium transition-all duration-150
+           hover:bg-gray-100 active:scale-95 whitespace-nowrap;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 20px;
+    color: rgba(15,15,15,0.60);
+  }
+
+  .card-light {
+    @apply bg-white rounded-2xl shadow-card
+           transition-all duration-300
+           hover:shadow-card-hover hover:-translate-y-0.5;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .card-surface {
+    @apply bg-white rounded-2xl
+           transition-all duration-300
+           hover:shadow-card;
+    background: rgba(255,255,255,0.70);
+    border: 1px solid rgba(0,0,0,0.06);
+    backdrop-filter: blur(8px);
+  }
+
+  /* ── Tags ── */
+  .tag {
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full;
+    background: rgba(0,0,0,0.06);
+    color: #2A2A2A;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .tag-dark {
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full
+           bg-[#0F0F0F] text-white;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    @apply inline-flex items-center px-3.5 py-1.5 text-xs font-semibold
+           rounded-full text-[#666] uppercase tracking-widest;
+    border: 1px solid rgba(0,0,0,0.10);
+    background: rgba(255,255,255,0.60);
+    backdrop-filter: blur(8px);
+  }
+
+  /* ── Inputs ── */
+  .input-light {
+    @apply w-full px-4 py-3 bg-white text-[#0F0F0F] placeholder-gray-400 text-sm
+           rounded-xl transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-gray-200;
+    border: 1px solid rgba(0,0,0,0.10);
+  }
+  .input-light:focus {
+    border-color: rgba(0,0,0,0.30);
+  }
+
+  /* ── Filter chips ── */
+  .chip {
+    @apply inline-flex items-center px-4 py-2 text-sm font-medium rounded-full
+           text-[#666] cursor-pointer
+           hover:text-[#0F0F0F] hover:bg-white
+           transition-all duration-150 whitespace-nowrap;
+    background: rgba(255,255,255,0.70);
+    border: 1px solid rgba(0,0,0,0.10);
+  }
+  .chip:hover {
+    border-color: rgba(0,0,0,0.20);
+  }
+
+  .chip-active {
+    @apply inline-flex items-center px-4 py-2 text-sm font-medium rounded-full
+           bg-[#0F0F0F] text-white cursor-pointer
+           transition-all duration-150 whitespace-nowrap;
+    border: 1px solid #0F0F0F;
+  }
+
+  /* ── Dashboard mockup container ── */
+  .mockup-inner {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.20), 0 10px 30px rgba(0,0,0,0.10);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .text-balance { text-wrap: balance; }
+  .font-heading { font-family: 'Space Grotesk', system-ui, sans-serif; }
+  .pause-hover:hover { animation-play-state: paused; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
