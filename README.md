@@ -6,12 +6,6 @@ Canopus Labs is an open-source discovery platform built around two core ideas: *
 
 ---
 
-## Screenshots
-
-> Landing page · Organizations directory · Event detail
-
----
-
 ## Features
 
 - **Organization discovery** — 500+ GSoC organizations with logos, categories, technologies, topics, and per-year project history
