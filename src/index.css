@@ -7,9 +7,11 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;  /* prevent horizontal scroll on any page */
   }
 
   body {
+    overflow-x: hidden;
     background: linear-gradient(
       160deg,
       #B8CEDA 0%,
@@ -27,20 +29,22 @@
     line-height: 1.6;
   }
 
-  /* Typography scale */
-  h1 { font-size: 72px; line-height: 1.05; font-weight: 600; letter-spacing: -0.025em; }
-  h2 { font-size: 52px; line-height: 1.1;  font-weight: 600; letter-spacing: -0.02em; }
-  h3 { font-size: 18px; line-height: 1.5;  font-weight: 600; }
-  h4 { font-size: 16px; line-height: 1.6;  font-weight: 600; }
-  p  { font-size: 16px; line-height: 1.6;  font-weight: 400; }
+  /* ── Responsive typography scale ── */
+  h1 { font-size: clamp(2rem, 6vw, 4.5rem); line-height: 1.05; font-weight: 600; letter-spacing: -0.025em; }
+  h2 { font-size: clamp(1.6rem, 4vw, 3.25rem); line-height: 1.1;  font-weight: 600; letter-spacing: -0.02em; }
+  h3 { font-size: clamp(1rem, 2.5vw, 1.125rem); line-height: 1.5; font-weight: 600; }
+  h4 { font-size: 1rem;  line-height: 1.6; font-weight: 600; }
+  p  { font-size: 1rem;  line-height: 1.6; font-weight: 400; }
 
+  /* Explicit breakpoints kept for components that still use tag-level selectors */
   @media (max-width: 768px) {
-    h1 { font-size: 44px; }
-    h2 { font-size: 34px; }
+    h1 { font-size: clamp(1.8rem, 8vw, 2.75rem); }
+    h2 { font-size: clamp(1.4rem, 6vw, 2.125rem); }
+    h3 { font-size: 1rem; }
   }
   @media (max-width: 480px) {
-    h1 { font-size: 36px; }
-    h2 { font-size: 28px; }
+    h1 { font-size: clamp(1.6rem, 9vw, 2.25rem); }
+    h2 { font-size: clamp(1.25rem, 7vw, 1.75rem); }
   }
 
   * { box-sizing: border-box; }
@@ -61,7 +65,7 @@
 
 @layer components {
 
-  /* ── Hero background — sky gradient matching Obliqq ── */
+  /* ── Hero background ── */
   .hero-bg {
     background: linear-gradient(
       180deg,
@@ -84,15 +88,15 @@
     box-shadow: 0 2px 20px rgba(0,0,0,0.06);
   }
 
-  /* ── Buttons ── */
+  /* ── Buttons — scale on small screens ── */
   .btn-dark {
     @apply inline-flex items-center gap-2 rounded-full
            bg-[#0F0F0F] text-white font-medium
            transition-all duration-200 hover:bg-[#2A2A2A] hover:shadow-lg
            active:scale-95 whitespace-nowrap;
-    font-size: 15px;
+    font-size: clamp(13px, 2vw, 15px);
     font-weight: 500;
-    padding: 10px 22px;
+    padding: clamp(8px, 1.5vw, 10px) clamp(16px, 3vw, 22px);
   }
 
   .btn-outline {
@@ -100,9 +104,9 @@
            text-[#0F0F0F] font-medium
            transition-all duration-200 hover:shadow-card
            active:scale-95 whitespace-nowrap;
-    font-size: 15px;
+    font-size: clamp(13px, 2vw, 15px);
     font-weight: 500;
-    padding: 10px 22px;
+    padding: clamp(8px, 1.5vw, 10px) clamp(16px, 3vw, 22px);
     background: rgba(255,255,255,0.6);
     border: 1px solid rgba(0,0,0,0.10);
     backdrop-filter: blur(8px);
@@ -116,9 +120,9 @@
     @apply inline-flex items-center gap-2 rounded-full
            font-medium transition-all duration-150
            hover:bg-gray-100 active:scale-95 whitespace-nowrap;
-    font-size: 15px;
+    font-size: clamp(13px, 2vw, 15px);
     font-weight: 500;
-    padding: 10px 20px;
+    padding: clamp(8px, 1.5vw, 10px) clamp(14px, 2.5vw, 20px);
     color: rgba(15,15,15,0.60);
   }
 
@@ -198,6 +202,14 @@
     box-shadow: 0 40px 100px rgba(0,0,0,0.20), 0 10px 30px rgba(0,0,0,0.10);
     overflow: hidden;
     border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  /* ── Responsive page headers ── */
+  .page-title {
+    font-size: clamp(1.75rem, 5vw, 2.625rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
   }
 }
 

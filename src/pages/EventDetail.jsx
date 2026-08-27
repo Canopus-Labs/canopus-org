@@ -96,31 +96,32 @@ export default function EventDetail() {
     : null
 
   return (
-    <main className="min-h-screen bg-white" style={{ paddingTop: 80 }}>
+    <main className="min-h-screen bg-white" style={{ paddingTop: 'clamp(60px,8vw,80px)' }}>
 
       {/* Back nav */}
-      <div className="max-w-7xl mx-auto px-8 md:px-14 pt-6 pb-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14 pt-6 pb-0">
         <button onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-sm text-gray-400 hover:text-gray-900 transition-colors">
           <ArrowLeft size={14} /> Back to Events
         </button>
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 md:px-14 pb-24">
-        <div className="grid lg:grid-cols-[1fr_360px] gap-12 lg:gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14 pb-16">
+        <div className="grid lg:grid-cols-[1fr_340px] gap-8 lg:gap-14 items-start">
 
           {/* ── Main column ── */}
           <div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }} className="pt-8 pb-6">
 
-              {/* Logo + name */}
-              <div className="flex items-start gap-6 mb-6">
+              {/* Logo + name — flex-col on mobile, row on sm+ */}
+              <div className="flex flex-col sm:flex-row items-start gap-5 mb-6">
                 {/* Logo / initials */}
                 <div
                   className="flex-shrink-0 rounded-2xl overflow-hidden flex items-center justify-center"
                   style={{
-                    width: 96, height: 96,
+                    width: 'clamp(72px,15vw,96px)',
+                    height: 'clamp(72px,15vw,96px)',
                     background: (logoSrc && !imgError) ? '#fff' : accent,
                     border: '1px solid rgba(0,0,0,0.08)',
                   }}
@@ -165,7 +166,7 @@ export default function EventDetail() {
 
                   <h1
                     className="font-heading font-bold text-gray-900 leading-tight mb-2"
-                    style={{ fontSize: 40, letterSpacing: '-0.02em' }}
+                    style={{ fontSize: 'clamp(1.4rem,5vw,2.5rem)', letterSpacing: '-0.02em' }}
                   >
                     {event.name}
                   </h1>
@@ -264,7 +265,7 @@ export default function EventDetail() {
           <motion.aside
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.15 }}
-            className="lg:sticky lg:top-28 flex flex-col gap-4 pt-8"
+            className="lg:sticky lg:top-28 flex flex-col gap-4 pt-4 lg:pt-8"
           >
             {/* Primary CTA */}
             {event.website && (

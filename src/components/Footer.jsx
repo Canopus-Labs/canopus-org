@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { Github, Linkedin } from 'lucide-react'
+import { Linkedin } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer style={{ padding: '20px 24px 40px', background: 'transparent' }}>
+    <footer className="px-4 sm:px-6 pb-8 pt-5" style={{ background: 'transparent' }}>
       <div
         className="max-w-5xl mx-auto"
         style={{
@@ -17,35 +17,25 @@ export default function Footer() {
         }}
       >
         {/* ── Main content ── */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:gap-20 px-10 pt-10 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 px-6 sm:px-8 pt-8 pb-6">
 
           {/* Left — brand */}
           <div className="max-w-xs">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 mb-5 w-fit group">
-              <div
-                className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-                style={{ background: '#0F0F0F' }}
-              >
+            <Link to="/" className="flex items-center gap-2 mb-4 w-fit group">
+              <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                style={{ background: '#0F0F0F' }}>
                 <img src="/logo.png" alt="Canopus Labs" className="w-full h-full rounded-lg object-contain" />
               </div>
-              <span
-                className="font-heading font-bold uppercase tracking-tight"
-                style={{ fontSize: '15px', color: '#0F0F0F' }}
-              >
+              <span className="font-heading font-bold uppercase tracking-tight"
+                style={{ fontSize: '15px', color: '#0F0F0F' }}>
                 CANOPUS LABS
               </span>
             </Link>
 
-            {/* Tagline */}
-            <p
-              className="mb-7"
-              style={{ fontSize: '14px', lineHeight: '1.6', color: 'rgba(0,0,0,0.48)' }}
-            >
+            <p className="mb-6" style={{ fontSize: '14px', lineHeight: '1.6', color: 'rgba(0,0,0,0.48)' }}>
               Your gateway to open source. Discover organizations, programs and events worth contributing to.
             </p>
 
-            {/* Social icons */}
             <div className="flex items-center gap-2.5">
               {[
                 {
@@ -63,36 +53,25 @@ export default function Footer() {
                   icon: <Linkedin size={15} />,
                 },
               ].map(({ href, label, icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105"
-                  style={{
-                    background: '#0F0F0F',
-                    color: 'white',
-                  }}
-                >
+                  style={{ background: '#0F0F0F', color: 'white' }}>
                   {icon}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Right — two link columns */}
-          <div className="flex gap-16">
-
+          {/* Right — link columns: stack on mobile, row on sm+ */}
+          <div className="flex flex-row gap-8 sm:gap-12">
             {/* Pages */}
-            <div>
-              <p
-                className="mb-5 uppercase tracking-widest"
-                style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(0,0,0,0.40)' }}
-              >
+            <div className="flex-1">
+              <p className="mb-4 uppercase tracking-widest"
+                style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(0,0,0,0.40)' }}>
                 Pages
               </p>
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-2.5">
                 {[
                   { label: 'Home',          href: '/' },
                   { label: 'Organizations', href: '/organizations' },
@@ -100,11 +79,9 @@ export default function Footer() {
                   { label: 'Explore',       href: '/explore' },
                 ].map(({ label, href }) => (
                   <li key={label}>
-                    <Link
-                      to={href}
+                    <Link to={href}
                       style={{ fontSize: '14px', lineHeight: '1.4', color: 'rgba(0,0,0,0.65)' }}
-                      className="hover:text-gray-900 transition-colors duration-150"
-                    >
+                      className="hover:text-gray-900 transition-colors duration-150">
                       {label}
                     </Link>
                   </li>
@@ -113,37 +90,29 @@ export default function Footer() {
             </div>
 
             {/* Information */}
-            <div>
-              <p
-                className="mb-5 uppercase tracking-widest"
-                style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(0,0,0,0.40)' }}
-              >
+            <div className="flex-1">
+              <p className="mb-4 uppercase tracking-widest"
+                style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(0,0,0,0.40)' }}>
                 Information
               </p>
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-2.5">
                 {[
-                  { label: 'About',   href: '/#about' },
-                  { label: 'GitHub',  href: 'https://github.com/Canopus-Labs',   external: true },
-                  { label: 'LinkedIn',href: 'https://www.linkedin.com/company/canopus-labs/', external: true },
-                  { label: 'X',       href: 'https://x.com',        external: true },
+                  { label: 'About',    href: '/#about' },
+                  { label: 'GitHub',   href: 'https://github.com/Canopus-Labs',             external: true },
+                  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/canopus-labs/', external: true },
+                  { label: 'X',        href: 'https://x.com',                               external: true },
                 ].map(({ label, href, external }) => (
                   <li key={label}>
                     {external ? (
-                      <a
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <a href={href} target="_blank" rel="noopener noreferrer"
                         style={{ fontSize: '14px', lineHeight: '1.4', color: 'rgba(0,0,0,0.65)' }}
-                        className="hover:text-gray-900 transition-colors duration-150"
-                      >
+                        className="hover:text-gray-900 transition-colors duration-150">
                         {label}
                       </a>
                     ) : (
-                      <Link
-                        to={href}
+                      <Link to={href}
                         style={{ fontSize: '14px', lineHeight: '1.4', color: 'rgba(0,0,0,0.65)' }}
-                        className="hover:text-gray-900 transition-colors duration-150"
-                      >
+                        className="hover:text-gray-900 transition-colors duration-150">
                         {label}
                       </Link>
                     )}
@@ -154,13 +123,11 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── Divider ── */}
-        <div style={{ height: '1px', background: 'rgba(0,0,0,0.08)', margin: '0 40px' }} />
+        {/* ── Divider — responsive margins ── */}
+        <div className="mx-6 sm:mx-8" style={{ height: '1px', background: 'rgba(0,0,0,0.08)' }} />
 
         {/* ── Bottom bar ── */}
-        <div
-          className="flex flex-col sm:flex-row items-center justify-between gap-3 px-10 py-5"
-        >
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 px-6 sm:px-8 py-4">
           <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.38)' }}>
             © {new Date().getFullYear()} Canopus Labs. Open-source discovery platform.
           </p>

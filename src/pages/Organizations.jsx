@@ -415,7 +415,7 @@ export default function Organizations() {
 
   // ── Sidebar ───────────────────────────────────────────────────────────────
   const SidebarContent = () => (
-    <div style={{ width: 280 }}>
+    <div style={{ width: '100%', maxWidth: 280 }}>
       {/* Search with autocomplete */}
       <SearchBox
         value={search}
@@ -461,19 +461,19 @@ export default function Organizations() {
     <main className="min-h-screen" style={{ background: '#FFFFFF' }}>
 
       {/* Header */}
-      <div style={{ paddingTop: 120, paddingBottom: 32, background: '#fff' }}>
-        <div className="max-w-screen-2xl mx-auto px-8 md:px-14">
-          <h1 className="font-heading font-bold text-gray-900 mb-2" style={{ fontSize: 42, letterSpacing: '-0.02em' }}>
+      <div style={{ paddingTop: 'clamp(80px, 10vw, 120px)', paddingBottom: 24, background: '#fff' }}>
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14">
+          <h1 className="font-heading font-bold text-gray-900 mb-2 page-title">
             Organizations
           </h1>
-          <p className="text-gray-500" style={{ fontSize: 16 }}>
+          <p className="text-gray-500 text-sm sm:text-base">
             Discover open-source organizations participating in Google Summer of Code.
           </p>
         </div>
       </div>
 
       {/* Mobile filter toggle */}
-      <div className="md:hidden max-w-screen-2xl mx-auto px-8 mb-4">
+      <div className="md:hidden max-w-screen-2xl mx-auto px-4 sm:px-6 mb-4">
         <button onClick={() => setMobileOpen(o => !o)}
           className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-900 text-white text-sm font-medium">
           Filters {activeFilterCount > 0 && `(${activeFilterCount})`}
@@ -487,11 +487,11 @@ export default function Organizations() {
       </div>
 
       {/* Main: sidebar + grid */}
-      <div className="max-w-screen-2xl mx-auto px-8 md:px-14 pb-24">
-        <div className="flex gap-8 items-start">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14 pb-16">
+        <div className="flex gap-6 lg:gap-8 items-start">
 
           {/* Sidebar — desktop */}
-          <div className="hidden md:block sticky top-24 self-start no-scrollbar" style={{ width: 280, minWidth: 280 }}>
+          <div className="hidden md:block sticky top-24 self-start no-scrollbar" style={{ width: 260, minWidth: 260 }}>
             <SidebarContent />
           </div>
 
@@ -548,7 +548,7 @@ export default function Organizations() {
 
             {/* Skeletons while loading */}
             {showLoading && (
-              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {Array.from({ length: 12 }).map((_, i) => <SkeletonCard key={i} />)}
               </div>
             )}
@@ -582,7 +582,7 @@ export default function Organizations() {
             {/* Grid */}
             {!showLoading && orgs.length > 0 && (
               <>
-                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                   {orgs.map((org, i) => (
                     <OrgCard
                       key={`${org._id || org.gsocId}-${org.year}`}

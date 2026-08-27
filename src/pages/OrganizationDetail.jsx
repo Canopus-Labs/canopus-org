@@ -124,15 +124,15 @@ export default function OrganizationDetail() {
   // ── Loading ──
   if (loading) {
     return (
-      <main className="min-h-screen bg-white" style={{ paddingTop: 80 }}>
-        <div className="max-w-7xl mx-auto px-8 md:px-14 pt-6">
-          <button onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sm text-gray-400 hover:text-gray-900 transition-colors mb-6">
-            <ArrowLeft size={14} /> Back
-          </button>
-          <DetailSkeleton />
-        </div>
-      </main>
+      <main className="min-h-screen bg-white" style={{ paddingTop: 'clamp(60px,8vw,80px)' }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14 pt-6">
+        <button onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-sm text-gray-400 hover:text-gray-900 transition-colors mb-6">
+          <ArrowLeft size={14} /> Back
+        </button>
+        <DetailSkeleton />
+      </div>
+    </main>
     )
   }
 
@@ -156,18 +156,16 @@ export default function OrganizationDetail() {
   const latestYear = allYears[0]
 
   return (
-    <main className="min-h-screen bg-white" style={{ paddingTop: 80 }}>
-
-      {/* Back nav */}
-      <div className="max-w-7xl mx-auto px-8 md:px-14 pt-6 pb-0">
+    <main className="min-h-screen bg-white" style={{ paddingTop: 'clamp(60px,8vw,80px)' }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14 pt-6 pb-0">
         <button onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-sm text-gray-400 hover:text-gray-900 transition-colors">
           <ArrowLeft size={14} /> Back to Organizations
         </button>
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 md:px-14 pb-24">
-        <div className="grid lg:grid-cols-[1fr_360px] gap-12 lg:gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14 pb-16">
+        <div className="grid lg:grid-cols-[1fr_340px] gap-8 lg:gap-14 items-start">
 
           {/* ── Main column ── */}
           <div>
@@ -178,13 +176,14 @@ export default function OrganizationDetail() {
               transition={{ duration: 0.45 }}
               className="pt-8 pb-6"
             >
-              {/* Logo + name */}
-              <div className="flex items-start gap-8 mb-6">
+              {/* Logo + name — flex-col on mobile, row on sm+ */}
+              <div className="flex flex-col sm:flex-row items-start gap-5 mb-6">
                 {/* Logo */}
                 <div
                   className="flex-shrink-0 rounded-2xl overflow-hidden flex items-center justify-center"
                   style={{
-                    width: 140, height: 140,
+                    width: 'clamp(80px,18vw,140px)',
+                    height: 'clamp(80px,18vw,140px)',
                     background: org.imageBackgroundColor || '#F9FAFB',
                     border: '1px solid #E5E7EB',
                   }}
@@ -215,7 +214,7 @@ export default function OrganizationDetail() {
                 <div className="flex-1 min-w-0">
                   <h1
                     className="font-heading font-bold text-gray-900 leading-tight mb-3"
-                    style={{ fontSize: 44, letterSpacing: '-0.02em' }}
+                    style={{ fontSize: 'clamp(1.5rem,5vw,2.75rem)', letterSpacing: '-0.02em' }}
                   >
                     {org.name}
                   </h1>
@@ -298,7 +297,7 @@ export default function OrganizationDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.15 }}
-            className="lg:sticky lg:top-28 flex flex-col gap-3 pt-8"
+            className="lg:sticky lg:top-28 flex flex-col gap-3 pt-4 lg:pt-8"
           >
             {/* Primary CTA */}
             {org.website && (

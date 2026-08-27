@@ -420,14 +420,14 @@ export default function Home() {
           <motion.h1 initial={{ opacity:0, y:22 }} animate={{ opacity:1, y:0 }}
             transition={{ duration:0.65, delay:0.18, ease:[0.16,1,0.3,1] }}
             className="font-heading text-gray-900 text-balance mb-6"
-            style={{ fontSize:'72px', lineHeight:'1.05', fontWeight:600, letterSpacing:'-0.025em' }}>
+            style={{ fontSize:'clamp(2rem,8vw,4.5rem)', lineHeight:'1.05', fontWeight:600, letterSpacing:'-0.025em' }}>
             Your gateway to<br />open source.
           </motion.h1>
 
           <motion.p initial={{ opacity:0, y:16 }} animate={{ opacity:1, y:0 }}
             transition={{ duration:0.5, delay:0.3 }}
             className="max-w-xl mx-auto mb-10"
-            style={{ fontSize:'18px', lineHeight:'1.5', fontWeight:400, color:'rgba(15,15,15,0.52)' }}>
+            style={{ fontSize:'clamp(1rem,2.5vw,1.125rem)', lineHeight:'1.5', fontWeight:400, color:'rgba(15,15,15,0.52)' }}>
             Discover active organizations, open‑source programs and events worth contributing to — all in one place.
           </motion.p>
 
@@ -439,8 +439,8 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Mockup popup */}
-        <div className="relative z-20 mt-16 px-2 md:px-4 max-w-6xl mx-auto">
+        {/* Mockup popup — hidden on very small screens */}
+        <div className="relative z-20 mt-10 sm:mt-16 px-2 md:px-4 max-w-6xl mx-auto hidden sm:block">
           <motion.div style={{ y:mockupY, scale:mockupScale, opacity:rawOpacity, transformOrigin:'top center', willChange:'transform,opacity', borderRadius:'14px', overflow:'hidden' }}>
             <MockupDisplay />
           </motion.div>
@@ -452,8 +452,8 @@ export default function Home() {
       </section>
 
       {/* ═══ ECOSYSTEM STRIP ═══════════════════════════════════════════════ */}
-      <section style={{ paddingTop:'80px', paddingBottom:'20px', background:'transparent' }}>
-        <div className="max-w-4xl mx-auto px-6 md:px-10">
+      <section className="px-4 sm:px-6 md:px-10" style={{ paddingTop:'60px', paddingBottom:'20px', background:'transparent' }}>
+        <div className="max-w-4xl mx-auto">
           <p className="text-center uppercase tracking-widest mb-10"
             style={{ fontSize:11, fontWeight:600, color:'rgba(15,15,15,0.28)', letterSpacing:'0.15em' }}>
             Explore opportunities across the ecosystem
@@ -467,17 +467,17 @@ export default function Home() {
       </section>
 
       {/* ═══ FEATURES BENTO ════════════════════════════════════════════════ */}
-      <section style={{ paddingTop:'140px', paddingBottom:'140px', background:'transparent' }}>
-        <div className="max-w-5xl mx-auto px-6 md:px-10">
+      <section className="px-4 sm:px-6 md:px-10 overflow-hidden" style={{ paddingTop:'80px', paddingBottom:'80px', background:'transparent' }}>
+        <div className="max-w-5xl mx-auto w-full">
           <motion.div initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }}
             viewport={{ once:true, margin:'-60px' }} transition={{ duration:0.5 }}
-            className="text-center mb-16">
+            className="text-center mb-12">
             <span className="section-label mb-5 block w-fit mx-auto">Platform</span>
             <h2 className="font-heading text-gray-900 text-balance"
-              style={{ fontSize:'52px', lineHeight:'1.1', fontWeight:600, letterSpacing:'-0.02em' }}>
+              style={{ fontSize:'clamp(1.6rem,4vw,3.25rem)', lineHeight:'1.1', fontWeight:600, letterSpacing:'-0.02em' }}>
               Built for the open-source community
             </h2>
-            <p style={{ fontSize:'16px', lineHeight:'1.6' }} className="text-gray-500 mt-4 max-w-md mx-auto">
+            <p style={{ fontSize:'clamp(0.9rem,2vw,1rem)', lineHeight:'1.6' }} className="text-gray-500 mt-4 max-w-md mx-auto">
               Smart, curated and designed around how contributors actually discover and engage with open source.
             </p>
           </motion.div>
@@ -486,7 +486,7 @@ export default function Home() {
             {/* Organizations */}
             <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }}
               viewport={{ once:true, margin:'-40px' }} transition={{ duration:0.5 }}
-              className="card-light p-7 group">
+              className="card-light p-5 sm:p-7 group overflow-hidden min-w-0">
               <div className="w-11 h-11 rounded-xl bg-gray-100 flex items-center justify-center mb-5 group-hover:bg-gray-200 transition-colors duration-200">
                 <Building2 size={20} className="text-gray-800" />
               </div>
@@ -498,7 +498,7 @@ export default function Home() {
                 {organizations.slice(0, 3).map(org => {
                   const mockLogo = orgMockLogos[org.id]
                   return (
-                    <div key={org.id} className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors duration-150">
+                    <div key={org.id} className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors duration-150 overflow-hidden min-w-0">
                       <div className="w-6 h-6 rounded-lg bg-white overflow-hidden flex-shrink-0 flex items-center justify-center"
                         style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
                         {mockLogo ? (
@@ -510,9 +510,9 @@ export default function Home() {
                           </span>
                         )}
                       </div>
-                      <span className="text-xs font-medium text-gray-800 flex-1 truncate">{org.name}</span>
+                      <span className="text-xs font-medium text-gray-800 flex-1 truncate min-w-0">{org.name}</span>
                       {org.programs?.slice(0,1).map(p => (
-                        <span key={p} className="text-[10px] px-2 py-0.5 rounded-full bg-gray-900 text-white">{p}</span>
+                        <span key={p} className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-900 text-white flex-shrink-0 ml-auto">{p}</span>
                       ))}
                     </div>
                   )
@@ -527,7 +527,7 @@ export default function Home() {
               {/* Events */}
               <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }}
                 viewport={{ once:true, margin:'-40px' }} transition={{ duration:0.5, delay:0.1 }}
-                className="card-light p-7 group flex-1">
+                className="card-light p-5 sm:p-7 group flex-1 overflow-hidden min-w-0">
                 <div className="w-11 h-11 rounded-xl bg-gray-100 flex items-center justify-center mb-5 group-hover:bg-gray-200 transition-colors duration-200">
                   <CalendarDays size={20} className="text-gray-800" />
                 </div>
@@ -543,7 +543,7 @@ export default function Home() {
               {/* Every Stack */}
               <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }}
                 viewport={{ once:true, margin:'-40px' }} transition={{ duration:0.5, delay:0.15 }}
-                className="card-light p-7 group">
+                className="card-light p-5 sm:p-7 group overflow-hidden min-w-0">
                 <div className="w-11 h-11 rounded-xl bg-gray-100 flex items-center justify-center mb-5 group-hover:bg-gray-200 transition-colors duration-200">
                   <Terminal size={20} className="text-gray-800" />
                 </div>
@@ -560,15 +560,15 @@ export default function Home() {
       </section>
 
       {/* ═══ HOW IT WORKS ══════════════════════════════════════════════════ */}
-      <section style={{ paddingTop:'10px', paddingBottom:'100px', background:'transparent' }}>
-        <div className="max-w-5xl mx-auto px-6 md:px-10">
+      <section className="px-4 sm:px-6 md:px-10" style={{ paddingTop:'60px', paddingBottom:'80px', background:'transparent' }}>
+        <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity:0, y:16 }} whileInView={{ opacity:1, y:0 }}
             viewport={{ once:true }} transition={{ duration:0.5 }}
-            className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div>
               <span className="section-label mb-4 block w-fit">How it works</span>
               <h2 className="font-heading text-gray-900 tracking-tight"
-                style={{ fontSize:'52px', lineHeight:'1.1', fontWeight:600, letterSpacing:'-0.02em' }}>
+                style={{ fontSize:'clamp(1.6rem,4vw,3.25rem)', lineHeight:'1.1', fontWeight:600, letterSpacing:'-0.02em' }}>
                 From discovery<br />to contribution.
               </h2>
             </div>
@@ -599,41 +599,43 @@ export default function Home() {
       </section>
 
       {/* ═══ STATS ═════════════════════════════════════════════════════════ */}
-      <section style={{ paddingTop:'10px', paddingBottom:'80px', background:'transparent' }}>
-        <div className="max-w-5xl mx-auto px-6 md:px-10">
+      <section className="px-4 sm:px-6 md:px-10" style={{ paddingTop:'60px', paddingBottom:'60px', background:'transparent' }}>
+        <div className="max-w-5xl mx-auto">
           <motion.p initial={{ opacity:0, y:10 }} whileInView={{ opacity:1, y:0 }}
             viewport={{ once:true }} transition={{ duration:0.4 }}
-            className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-14">
+            className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-10">
             Open-source ecosystem, by the numbers
           </motion.p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0">
             {stats.map(({ value, label, sub }, i) => (
               <motion.div key={label} initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }}
                 viewport={{ once:true, margin:'-40px' }} transition={{ duration:0.5, delay:i*0.08 }}
-                className="flex flex-col items-center text-center px-6 py-8 relative group">
+                className="flex flex-col items-center text-center px-4 py-6 relative group">
                 {i>0 && <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-px h-16" style={{ background:'rgba(0,0,0,0.10)' }} />}
-                <span className="font-heading text-gray-900 mb-2 block" style={{ fontSize:'56px', lineHeight:'1', fontWeight:700, letterSpacing:'-0.03em' }}>{value}</span>
-                <span className="font-heading text-gray-800 mb-1 block" style={{ fontSize:'15px', fontWeight:600, lineHeight:'1.4' }}>{label}</span>
-                <span style={{ fontSize:'13px', lineHeight:'1.4', color:'rgba(0,0,0,0.38)' }}>{sub}</span>
+                <span className="font-heading text-gray-900 mb-1 block"
+                  style={{ fontSize:'clamp(2rem,6vw,3.5rem)', lineHeight:'1', fontWeight:700, letterSpacing:'-0.03em' }}>{value}</span>
+                <span className="font-heading text-gray-800 mb-0.5 block"
+                  style={{ fontSize:'clamp(0.8rem,1.5vw,0.9375rem)', fontWeight:600, lineHeight:'1.4' }}>{label}</span>
+                <span style={{ fontSize:'clamp(0.7rem,1.2vw,0.8125rem)', lineHeight:'1.4', color:'rgba(0,0,0,0.38)' }}>{sub}</span>
               </motion.div>
             ))}
           </div>
 
-          <p className="text-center mt-12" style={{ fontSize:'13px', color:'rgba(0,0,0,0.32)' }}>
+          <p className="text-center mt-8" style={{ fontSize:'13px', color:'rgba(0,0,0,0.32)' }}>
             Sample figures — updated as the platform grows
           </p>
         </div>
       </section>
 
       {/* ═══ TESTIMONIALS ══════════════════════════════════════════════════ */}
-      <section style={{ paddingTop:'100px', paddingBottom:'100px', background:'transparent' }}>
-        <div className="max-w-5xl mx-auto px-6 md:px-10">
+      <section className="px-4 sm:px-6 md:px-10" style={{ paddingTop:'80px', paddingBottom:'80px', background:'transparent' }}>
+        <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity:0, y:16 }} whileInView={{ opacity:1, y:0 }}
-            viewport={{ once:true }} transition={{ duration:0.5 }} className="text-center mb-16">
+            viewport={{ once:true }} transition={{ duration:0.5 }} className="text-center mb-12">
             <span className="section-label mb-5 block w-fit mx-auto">Community</span>
             <h2 className="font-heading text-gray-900 tracking-tight"
-              style={{ fontSize:'52px', lineHeight:'1.1', fontWeight:600, letterSpacing:'-0.02em' }}>
+              style={{ fontSize:'clamp(1.6rem,4vw,3.25rem)', lineHeight:'1.1', fontWeight:600, letterSpacing:'-0.02em' }}>
               Loved by contributors worldwide
             </h2>
           </motion.div>
@@ -664,23 +666,23 @@ export default function Home() {
 
       {/* ═══ CTA + FOOTER — shared sky bg ═════════════════════════════════ */}
       <div style={{ background:'linear-gradient(160deg, #B8CEDA 0%, #C8D9E5 30%, #DDE8EF 60%, #EDE0D5 100%)' }}>
-        <section className="relative overflow-hidden" style={{ paddingTop:'160px', paddingBottom:'80px' }}>
+        <section className="relative overflow-hidden px-4 sm:px-6 md:px-10" style={{ paddingTop:'80px', paddingBottom:'60px' }}>
           <div aria-hidden="true" className="absolute pointer-events-none"
             style={{ top:'-20%', left:'50%', transform:'translateX(-50%)', width:'70%', height:'400px', background:'radial-gradient(ellipse at center, rgba(255,255,255,0.8), transparent 70%)', filter:'blur(50px)', opacity:0.5 }} />
-          <div className="relative max-w-3xl mx-auto px-6 md:px-10 text-center">
+          <div className="relative max-w-3xl mx-auto text-center">
             <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }}
               viewport={{ once:true }} transition={{ duration:0.6 }}>
-              <h2 className="font-heading text-gray-900 tracking-tight leading-none text-balance mb-6"
-                style={{ fontSize:'52px', lineHeight:'1.1', fontWeight:600, letterSpacing:'-0.02em' }}>
+              <h2 className="font-heading text-gray-900 tracking-tight leading-none text-balance mb-5"
+                style={{ fontSize:'clamp(1.6rem,5vw,3.25rem)', lineHeight:'1.1', fontWeight:600, letterSpacing:'-0.02em' }}>
                 Your first contribution<br />could start here.
               </h2>
-              <p className="mb-10 max-w-lg mx-auto"
-                style={{ fontSize:'18px', lineHeight:'1.5', fontWeight:400, color:'rgba(15,15,15,0.58)' }}>
+              <p className="mb-8 max-w-lg mx-auto"
+                style={{ fontSize:'clamp(0.9rem,2vw,1.125rem)', lineHeight:'1.5', fontWeight:400, color:'rgba(15,15,15,0.58)' }}>
                 Explore organizations, discover events and find your place in the open-source world.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link to="/explore" className="btn-dark px-8 py-3.5">Start Exploring →</Link>
-                <Link to="/organizations" className="btn-outline px-8 py-3.5">Browse Organizations</Link>
+                <Link to="/explore" className="btn-dark">Start Exploring →</Link>
+                <Link to="/organizations" className="btn-outline">Browse Organizations</Link>
               </div>
             </motion.div>
           </div>

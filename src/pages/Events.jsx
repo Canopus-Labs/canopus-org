@@ -160,7 +160,7 @@ export default function Events() {
   const activeCount = typeFilters.length + scopeFilters.length + statusFilter.length + (search ? 1 : 0)
 
   const SidebarContent = () => (
-    <aside style={{ width: 260 }}>
+    <aside style={{ width: '100%', maxWidth: 260 }}>
       {/* Search */}
       <div className="relative mb-6">
         <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
@@ -232,20 +232,19 @@ export default function Events() {
     <main className="min-h-screen" style={{ background: '#FFFFFF' }}>
 
       {/* Header */}
-      <div style={{ paddingTop: 120, paddingBottom: 32 }}>
-        <div className="max-w-screen-2xl mx-auto px-8 md:px-14">
-          <h1 className="font-heading font-bold text-gray-900 mb-2"
-            style={{ fontSize: 42, letterSpacing: '-0.02em' }}>
+      <div style={{ paddingTop: 'clamp(80px,10vw,120px)', paddingBottom: 24 }}>
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14">
+          <h1 className="font-heading font-bold text-gray-900 mb-2 page-title">
             Open Source Events
           </h1>
-          <p className="text-gray-500" style={{ fontSize: 16 }}>
+          <p className="text-gray-500 text-sm sm:text-base">
             Find mentorships, programs, hackathons and events that can kickstart your open-source journey.
           </p>
         </div>
       </div>
 
       {/* Mobile filter toggle */}
-      <div className="md:hidden max-w-screen-2xl mx-auto px-8 mb-4">
+      <div className="md:hidden max-w-screen-2xl mx-auto px-4 sm:px-6 mb-4">
         <button onClick={() => setMobileOpen(o => !o)}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gray-900 text-white text-sm font-medium">
           Filters {activeCount > 0 && `(${activeCount})`}
@@ -259,8 +258,8 @@ export default function Events() {
       </div>
 
       {/* Main layout */}
-      <div className="max-w-screen-2xl mx-auto px-8 md:px-14 pb-24">
-        <div className="flex gap-8 items-start">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14 pb-16">
+        <div className="flex gap-6 lg:gap-8 items-start">
 
           {/* Sidebar — desktop */}
           <div className="hidden md:block sticky top-24 self-start no-scrollbar"
